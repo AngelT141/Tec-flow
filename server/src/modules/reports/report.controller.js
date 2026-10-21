@@ -1,9 +1,8 @@
 import * as reportService from './report.service.js';
-import { summaryQuerySchema } from './report.schemas.js';
 
 export async function summary(req, res, next) {
   try {
-    const { from, to } = summaryQuerySchema.parse(req.query);
+    const { from, to } = req.validatedQuery;
     const result = await reportService.summary({ from, to });
     res.json(result);
   } catch (err) {

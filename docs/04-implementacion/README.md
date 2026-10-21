@@ -46,15 +46,24 @@ Construir el sistema Tec-flow conforme al diseño aprobado.
 
 ## Cómo ejecutar en local
 
-Requisitos: Node.js 18+, base PostgreSQL (Supabase).
+Requisitos: Node.js 18+ y PostgreSQL (local o Supabase).
+
+### Base de datos de desarrollo
+
+Actualmente se usa **PostgreSQL 14 local (Homebrew)** con la base `tecflow_dev`:
+
+```bash
+createdb tecflow_dev
+```
+
+En `server/.env`, `DATABASE_URL` apunta a la base local. Para producción con Supabase, usar la cadena **Session pooler** (IPv4) del panel de Supabase, porque la conexión directa (`db.<ref>.supabase.co`) es solo IPv6 y puede no ser alcanzable.
 
 ### Servidor
 
 ```bash
 cd server
-cp .env.example .env      # completar DATABASE_URL (Supabase) y JWT_SECRET
 npm install
-npx prisma migrate dev    # crea las tablas
+npx prisma migrate dev    # crea/actualiza las tablas
 npm run seed              # datos iniciales
 npm run dev               # API en http://localhost:4000
 ```
@@ -75,7 +84,27 @@ npm run dev               # web en http://localhost:5173 (proxy a /api)
 | AGENT | agente@tecflow.com | Agente1234! |
 | USER | usuario@tecflow.com | Usuario1234! |
 
+## Pruebas end-to-end ejecutadas (21 oct 2026)
+
+| Escenario | Resultado |
+|-----------|-----------|
+| Login de los 3 roles | ✅ |
+| Crear ticket → TEC-0001 en estado OPEN | ✅ |
+| Listado del usuario (solo propios) y filtros | ✅ |
+| Asignación por agente → IN_PROGRESS | ✅ |
+| Comentario del agente | ✅ |
+| Resolver con nota → RESOLVED | ✅ |
+| Reabrir por el creador → IN_PROGRESS | ✅ |
+| Resolver de nuevo y cerrar → CLOSED | ✅ |
+| Historial completo (8 eventos en orden) | ✅ |
+| Admin: listado de usuarios, reportes, alta de usuario | ✅ |
+| Auto-desactivación de cuenta (bloqueada) | ✅ |
+| Usuario intenta resolver / ver reportes (403) | ✅ |
+| Cancelar ticket no abierto (400) | ✅ |
+
 ## Notas técnicas
 
 - Se usó **Prisma 6.x** (estable) porque la versión 8 RC cambia el CLI por completo.
-- La migración y el seed requieren una `DATABASE_URL` real de Supabase en `server/.env` (archivo local, no versionado).
+- Express 5: `req.query` es de solo lectura; los esquemas de query se guardan en `req.validatedQuery`.
+- Migración inicial versionada en `server/prisma/migrations/`.
+- El archivo `server/.env` es local y no se versiona (contiene secretos).

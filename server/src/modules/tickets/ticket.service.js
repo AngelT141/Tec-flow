@@ -50,7 +50,7 @@ function verificarTransicion(statusActual, esperado, accion) {
 }
 
 async function transicionar(ticket, user, nuevoEstado, accion, datosExtra = {}) {
-  const [, updated] = await prisma.$transaction([
+  const [updated] = await prisma.$transaction([
     prisma.ticket.update({
       where: { id: ticket.id },
       data: {

@@ -16,7 +16,7 @@ function parseId(param) {
 
 export async function list(req, res, next) {
   try {
-    const result = await ticketService.listTickets(req.user, req.query);
+    const result = await ticketService.listTickets(req.user, req.validatedQuery);
     res.json(result);
   } catch (err) {
     next(err);

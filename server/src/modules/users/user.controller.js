@@ -2,7 +2,7 @@ import * as userService from './user.service.js';
 
 export async function list(req, res, next) {
   try {
-    const result = await userService.listUsers(req.query);
+    const result = await userService.listUsers(req.validatedQuery);
     res.json(result);
   } catch (err) {
     next(err);
