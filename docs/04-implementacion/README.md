@@ -46,34 +46,36 @@ Construir el sistema Tec-flow conforme al diseño aprobado.
 
 ## Cómo ejecutar en local
 
-Requisitos: Node.js 18+ y PostgreSQL (local o Supabase).
-
-### Base de datos de desarrollo
-
-Actualmente se usa **PostgreSQL 14 local (Homebrew)** con la base `tecflow_dev`:
-
-```bash
-createdb tecflow_dev
-```
-
-En `server/.env`, `DATABASE_URL` apunta a la base local. Para producción con Supabase, usar la cadena **Session pooler** (IPv4) del panel de Supabase, porque la conexión directa (`db.<ref>.supabase.co`) es solo IPv6 y puede no ser alcanzable.
+Requisitos: Node.js 18+ y acceso a la base (Supabase o PostgreSQL local).
 
 ### Servidor
 
 ```bash
 cd server
 npm install
-npx prisma migrate dev    # crea/actualiza las tablas
-npm run seed              # datos iniciales
-npm run dev               # API en http://localhost:4000
+npx prisma migrate deploy    # aplica las migraciones (Supabase o local)
+npm run seed                 # datos iniciales
+npm run dev                  # API en http://localhost:4000
 ```
+
+### Base de datos
+
+Se usa **Supabase** mediante la cadena **Session pooler** (IPv4), porque la conexión directa (`db.<ref>.supabase.co`) es solo IPv6. Alternativa local: PostgreSQL via Homebrew con la base `tecflow_dev` (dejar la URL local comentada en `server/.env`).
+
+### Seguridad de la base (Supabase Advisors)
+
+La migración `20261022010000_harden_public_tables` resuelve los avisos del *Security Advisor*:
+
+- **RLS habilitado** en las 7 tablas públicas (`users`, `categories`, `tickets`, `comments`, `history_entries`, `counters`, `_prisma_migrations`). La API entra como rol `postgres`, que tiene `BYPASSRLS`, por lo que Prisma sigue operando igual.
+- **Permisos revocados** a `anon` y `authenticated`: la app no usa PostgREST, así que nadie puede leer/escribir con la anon key.
+- **Índices añadidos** para las FKs sin índice (`comments.authorId`, `history_entries.actorId`), que resuelve los avisos del *Performance Advisor*.
 
 ### Cliente
 
 ```bash
 cd client
 npm install
-npm run dev               # web en http://localhost:5173 (proxy a /api)
+npm run dev                  # web en http://localhost:5173 (proxy a /api)
 ```
 
 ### Usuarios sembrados
