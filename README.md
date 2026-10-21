@@ -28,7 +28,7 @@ Proyecto desarrollado siguiendo un proceso formal de Ingeniería de Software, co
 | 1. Planificación | `docs/01-planificacion/` | ✅ Completada |
 | 2. Análisis | `docs/02-analisis/` | ✅ Completada |
 | 3. Diseño | `docs/03-diseno/` | ✅ Completada |
-| 4. Implementación | `docs/04-implementacion/` | Pendiente |
+| 4. Implementación | `docs/04-implementacion/` | 🚧 En progreso |
 | 5. Pruebas | `docs/05-pruebas/` | Pendiente |
 | 6. Despliegue | `docs/06-despliegue/` | Pendiente |
 
