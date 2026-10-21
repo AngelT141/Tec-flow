@@ -1,0 +1,31 @@
+# Dependencias
+node_modules/
+vendor/
+venv/
+__pycache__/
+*.pyc
+
+# Compilación / build
+dist/
+build/
+*.egg-info/
+
+# Archivos de entorno
+.env
+.env.local
+*.local
+
+# IDE / editores
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cobertura de pruebas
+coverage/
+htmlcov/
+.coverage
