@@ -26,7 +26,7 @@ Proyecto desarrollado siguiendo un proceso formal de Ingeniería de Software, co
 | Fase | Carpeta | Estado |
 |------|---------|--------|
 | 1. Planificación | `docs/01-planificacion/` | ✅ Completada |
-| 2. Análisis | `docs/02-analisis/` | Pendiente |
+| 2. Análisis | `docs/02-analisis/` | ✅ Completada |
 | 3. Diseño | `docs/03-diseno/` | Pendiente |
 | 4. Implementación | `docs/04-implementacion/` | Pendiente |
 | 5. Pruebas | `docs/05-pruebas/` | Pendiente |
