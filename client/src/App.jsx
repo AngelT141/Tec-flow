@@ -6,6 +6,10 @@ import Register from './pages/Register.jsx';
 import Tickets from './pages/Tickets.jsx';
 import NewTicket from './pages/NewTicket.jsx';
 import TicketDetail from './pages/TicketDetail.jsx';
+import Users from './pages/admin/Users.jsx';
+import Categories from './pages/admin/Categories.jsx';
+import Reports from './pages/admin/Reports.jsx';
+import Metrics from './pages/agent/Metrics.jsx';
 
 export default function App() {
   return (
@@ -34,6 +38,38 @@ export default function App() {
           element={
             <RutaProtegida>
               <TicketDetail />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <RutaProtegida roles={['ADMIN']}>
+              <Users />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/admin/categories"
+          element={
+            <RutaProtegida roles={['ADMIN']}>
+              <Categories />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/admin/reports"
+          element={
+            <RutaProtegida roles={['ADMIN']}>
+              <Reports />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/metrics"
+          element={
+            <RutaProtegida roles={['AGENT', 'ADMIN']}>
+              <Metrics />
             </RutaProtegida>
           }
         />

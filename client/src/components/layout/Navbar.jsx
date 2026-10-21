@@ -20,6 +20,17 @@ export default function Navbar() {
       <nav className="navbar-nav">
         {user ? (
           <>
+            <div className="navbar-enlaces">
+              <Link to="/">Tickets</Link>
+              {(user.role === 'AGENT' || user.role === 'ADMIN') && <Link to="/metrics">Mis métricas</Link>}
+              {user.role === 'ADMIN' && (
+                <>
+                  <Link to="/admin/users">Usuarios</Link>
+                  <Link to="/admin/categories">Categorías</Link>
+                  <Link to="/admin/reports">Reportes</Link>
+                </>
+              )}
+            </div>
             <span className="navbar-usuario">
               {user.name} · {ETIQUETAS_ROL[user.role] || user.role}
             </span>

@@ -49,6 +49,23 @@ body {
   gap: 0.75rem;
 }
 
+.navbar-enlaces {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-enlaces a {
+  color: var(--color-texto-suave);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.navbar-enlaces a:hover {
+  color: var(--color-primario);
+}
+
 .navbar-usuario {
   color: var(--color-texto-suave);
   font-size: 0.9rem;
@@ -198,6 +215,82 @@ textarea {
 .btn-peligro {
   background: var(--color-error);
   color: #fff;
+}
+
+.btn-pequeno {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.panel-formulario {
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.panel-formulario h2 {
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.fila-filtros {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.fila-filtros input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.tarjetas-metricas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.tarjeta-metrica {
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.metrica-valor {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+.metrica-etiqueta {
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+}
+
+.rejilla-reportes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.rejilla-reportes h2 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
 }
 
 .badge {
@@ -416,6 +509,15 @@ textarea {
 
   .navbar-usuario {
     display: none;
+  }
+
+  .navbar-enlaces {
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .navbar-enlaces a {
+    font-size: 0.85rem;
   }
 
   .tabla-tickets th:nth-child(3),

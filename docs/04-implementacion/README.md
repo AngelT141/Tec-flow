@@ -29,12 +29,20 @@ Construir el sistema Tec-flow conforme al diseño aprobado.
 - **Cliente:** páginas de listado con filtros, creación de ticket y detalle con acciones por rol, comentarios e historial; badges de estado/prioridad/tipo.
 - **Verificado:** build del cliente OK; endpoints sin sesión responden 401; rutas montadas en `app.js`.
 
+### ✅ Completado (incremento 3 — administración y reportes)
+
+- **Usuarios (ADMIN):** listado con filtros y paginación, creación con rol, edición y activación/desactivación con bloqueo de la propia cuenta (RN-10).
+- **Categorías (ADMIN):** creación, renombrado y desactivación lógica (RN-11).
+- **Reportes (ADMIN):** totales por estado/tipo/prioridad, cerrados en el periodo y tiempo promedio de resolución, con filtro por fechas.
+- **Métricas del agente:** asignados, pendientes, resueltos y tiempo promedio (FR-20).
+- **UI:** páginas `/admin/users`, `/admin/categories`, `/admin/reports` y `/metrics`; navegación por rol en la barra superior; guard de rutas por rol.
+- **Verificado:** build del cliente OK; endpoints nuevos montados y protegidos (401 sin sesión).
+
 ### ⏳ Pendiente (incrementos siguientes)
 
-1. Módulo de usuarios y categorías (CRUD admin).
-2. Reportes y panel de métricas.
-3. Notificaciones internas.
-4. Pruebas automatizadas y pulido de UI.
+1. Notificaciones internas (FR-21, prioridad baja).
+2. Pruebas (plan, casos, ejecución) y corrección de defectos.
+3. Despliegue y manual de usuario.
 
 ## Cómo ejecutar en local
 

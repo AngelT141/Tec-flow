@@ -7,6 +7,8 @@ import { env } from './config/env.js';
 import authRoutes from './modules/auth/auth.routes.js';
 import ticketRoutes from './modules/tickets/ticket.routes.js';
 import categoryRoutes from './modules/categories/category.routes.js';
+import userRoutes from './modules/users/user.routes.js';
+import reportRoutes from './modules/reports/report.routes.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
@@ -32,6 +34,8 @@ app.use('/api/auth/login', loginLimiter);
 app.use('/api/auth', authRoutes);
 app.use('/api/tickets', ticketRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/reports', reportRoutes);
 
 app.use(errorHandler);
 
