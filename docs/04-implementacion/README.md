@@ -19,13 +19,22 @@ Construir el sistema Tec-flow conforme al diseño aprobado.
 - **Seed:** usuarios admin/agente/usuario, 4 categorías y contador TEC-xxxx.
 - **Verificado:** build del cliente OK, API arranca y `/api/health` + 401 correcto en `/api/auth/me`.
 
+### ✅ Completado (incremento 2 — módulo de tickets)
+
+- **API de tickets:** listado con filtros/paginación y alcance por rol (RN-03), creación con numeración TEC-xxxx en transacción (RN-02), detalle, historial, comentarios.
+- **Acciones con reglas de negocio:** `assign` (AGENT/ADMIN), `resolve` con nota obligatoria, `close`/`reopen` (creador o ADMIN), `cancel` (solo OPEN sin asignar; RN-05 a RN-09).
+- **Historial completo:** cada transición, asignación y comentario genera `HistoryEntry` (RN-12).
+- **Auto-cierre por inactividad:** tickets RESOLVED con más de 7 días se cierran al consultarlos (RN-15).
+- **Categorías:** `GET /api/categories` (activas para usuarios, todas para admin).
+- **Cliente:** páginas de listado con filtros, creación de ticket y detalle con acciones por rol, comentarios e historial; badges de estado/prioridad/tipo.
+- **Verificado:** build del cliente OK; endpoints sin sesión responden 401; rutas montadas en `app.js`.
+
 ### ⏳ Pendiente (incrementos siguientes)
 
-1. Módulo de tickets (crear, listar, detalle, historial, comentarios, acciones).
-2. Módulo de usuarios y categorías (admin).
-3. Reportes y panel de métricas.
-4. Notificaciones internas.
-5. Pulido de UI (badges, filtros, responsive completo).
+1. Módulo de usuarios y categorías (CRUD admin).
+2. Reportes y panel de métricas.
+3. Notificaciones internas.
+4. Pruebas automatizadas y pulido de UI.
 
 ## Cómo ejecutar en local
 

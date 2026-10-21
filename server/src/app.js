@@ -5,6 +5,8 @@ import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import { env } from './config/env.js';
 import authRoutes from './modules/auth/auth.routes.js';
+import ticketRoutes from './modules/tickets/ticket.routes.js';
+import categoryRoutes from './modules/categories/category.routes.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
@@ -28,6 +30,8 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api/auth/login', loginLimiter);
 app.use('/api/auth', authRoutes);
+app.use('/api/tickets', ticketRoutes);
+app.use('/api/categories', categoryRoutes);
 
 app.use(errorHandler);
 
